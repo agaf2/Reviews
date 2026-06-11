@@ -14,10 +14,11 @@ Feature: landing page
     When I view the landing page
     Then the top-rated works are listed ordered by their average score
 
-  Scenario: browse more trending works than the initial view
-    Given the system has more trending works than fit in the initial view
-    When I view the landing page
-    Then I can reach the trending works beyond the initial view
+Scenario: Reveal additional trending works beyond the initial view
+  Given the trending list contains "Duna: Parte 2", "Shogun", "X-Men '97", "Breaking Bad", "Oppenheimer", and "Avengers: Endgame"
+  And the initial view only displays up to 5 items
+  When the user scrolls the trending carousel to the right
+  Then the work "Avengers: Endgame" should become visible on the screen
 
   Scenario: search for a work from the landing page
     Given the system has a work titled "Fallout"
